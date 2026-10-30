@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StockWise — Smart AI Inventory & GST Billing Mobile App | Softgenix IT Solutions</title>
+  <meta name="description" content="AI-Powered Inventory & Stock Alert System for Kirana Stores, Medical Stores, Hardware, Cafes & Distributors across India. 100% Free Forever by Softgenix IT Solutions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF7A00;
+      --primary-dark: #E56A00;
+      --primary-light: #FFF2E6;
+      --text-main: #111827;
+      --text-muted: #6B7280;
+      --bg: #FFFFFF;
+      --surface: #F9FAFB;
+      --border: #E5E7EB;
+      --success: #10B981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 5%;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      background: var(--primary-light);
+      border: 1px solid #FFD8B3;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .brand span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn-nav-download {
+      background: var(--primary);
+      color: #FFFFFF !important;
+      padding: 0.65rem 1.4rem;
+      border-radius: 12px;
+      font-weight: 700 !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(255, 122, 0, 0.3);
+      transition: all 0.2s;
+    }
+
+    .btn-nav-download:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 5% 3rem;
+      text-align: center;
+      background: radial-gradient(circle at 50% 0%, #FFF5EB 0%, #FFFFFF 70%);
+    }
+
+    .pill-free {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-light);
+      border: 1px solid #FFDEBA;
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 30px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 900px;
+      margin: 0 auto 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      font-weight: 500;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn-download-apk {
+      background: var(--primary);
+      color: #FFFFFF;
+      padding: 1rem 2.2rem;
+      border-radius: 14px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 25px rgba(255, 122, 0, 0.35);
+      transition: all 0.25s;
+    }
+
+    .btn-download-apk:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(255, 122, 0, 0.45);
+    }
+
+    .btn-whatsapp-cta {
+      background: #FFFFFF;
+      color: #1A1A1A;
+      border: 2px solid var(--border);
+      padding: 0.95rem 1.8rem;
+      border-radius: 14px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+
+    .btn-whatsapp-cta:hover {
+      border-color: #25D366;
+      color: #128C7E;
+    }
+
+    .hero-app-mockup {
+      max-width: 1050px;
+      margin: 0 auto;
+      border-radius: 28px;
+      border: 8px solid #FFFFFF;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      background: #F3F4F6;
+    }
+
+    .hero-app-mockup img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Trust Stats */
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 3rem 5%;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      background: var(--surface);
+    }
+
+    .trust-metric {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .trust-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 5rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-top: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    /* Languages Support Banner */
+    .languages-banner {
+      background: #FFF8F2;
+      border: 1.5px dashed #FFBE85;
+      border-radius: 24px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .lang-text h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #8C3B00;
+    }
+
+    .lang-text p {
+      color: #9E5824;
+      font-size: 1rem;
+      margin-top: 4px;
+    }
+
+    .lang-tags {
+      display: flex;
+      gap: 12px;
+    }
+
+    .lang-pill {
+      background: #FFFFFF;
+      border: 1.5px solid #FFD3AD;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+
+    /* Creator / Company Contact Section */
+    .contact-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 5rem 5%;
+    }
+
+    .contact-card {
+      max-width: 850px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border-radius: 24px;
+      border: 2px solid var(--border);
+      padding: 3rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-badge {
+      display: inline-block;
+      background: #EBF9F1;
+      color: #0E8A4B;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .company-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .creator-lead {
+      font-size: 1.15rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .contact-icon {
+      font-size: 1.4rem;
+    }
+
+    .contact-info-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .contact-info-val {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 2px;
+    }
+
+    .contact-info-val a {
+      color: var(--text-main);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-info-val a:hover {
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      padding: 2.5rem 5%;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.3rem;
+      }
+      .navbar {
+        padding: 1rem 4%;
+      }
+      .nav-links a:not(.btn-nav-download) {
+        display: none;
+      }
+      .contact-card {
+        padding: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="#" class="brand">
+      <div class="brand-icon">📦</div>
+      Stock<span>Wise</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#languages">Languages</a>
+      <a href="#contact">Contact Developer</a>
+      <a href="downloads/StockWise-v1.0.apk" download class="btn-nav-download">
+        ⬇️ Download Free APK
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="pill-free">✨ 100% Free Forever • No Subscription • No Ads</div>
+    <h1 class="hero-title">
+      Smart AI Inventory & GST Billing App for <span>Indian Retailers</span>
+    </h1>
+    <p class="hero-subtitle">
+      Stock-in and billing in under 10 seconds. Photograph packaging or bills, and Google Gemini AI extracts product name, MRP, batch, and expiry automatically.
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero-cta-group">
+      <a href="downloads/StockWise-v1.0.apk" download class="btn-download-apk">
+        <span>📲</span>
+        <span>Download StockWise APK (Android)</span>
+      </a>
+      <a href="https://wa.me/919518721792?text=Hello%20Keyur,%20I%20want%20to%20know%20more%20about%20StockWise%20App" target="_blank" class="btn-whatsapp-cta">
+        <span>💬</span>
+        <span>Chat on WhatsApp: +91 9518721792</span>
+      </a>
+    </div>
+
+    <!-- Live App Screenshots Mockup -->
+    <div class="hero-app-mockup">
+      <img src="assets/app-screens.png" alt="StockWise App Screens - Login, Realtime Dashboard, AI Camera Scan, Quick POS Bill">
+    </div>
+  </section>
+
+  <!-- Key Metrics Strip -->
+  <div class="trust-strip">
+    <div>
+      <div class="trust-metric">&lt; 10s</div>
+      <div class="trust-label">Stock In via AI Photo</div>
+    </div>
+    <div>
+      <div class="trust-metric">Google Gemini</div>
+      <div class="trust-label">AI Multimodal Vision Engine</div>
+    </div>
+    <div>
+      <div class="trust-metric">FEFO</div>
+      <div class="trust-label">Auto Batch & Expiry Picking</div>
+    </div>
+    <div>
+      <div class="trust-metric">₹0 Free</div>
+      <div class="trust-label">Zero Subscription Lockout</div>
+    </div>
+  </div>
+
+  <!-- Features Grid -->
+  <section class="features" id="features">
+    <div class="section-header">
+      <span class="section-tag">Engineered for Indian Businesses</span>
+      <h2 class="section-title">Everything a Retailer Needs to Run Stock</h2>
+    </div>
+
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">📸</div>
+        <h3 class="feature-name">AI Photo Stock Extraction</h3>
+        <p class="feature-desc">
+          Point your camera at product boxes or supplier invoices. Powered by Google Gemini AI, it instantly extracts name, barcode, MRP, batch number, and expiry date.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3 class="feature-name">Lightning POS GST Billing</h3>
+        <p class="feature-desc">
+          Quick sell in 3 taps. Supports Cash, UPI QR, and Udhaar (Customer Khata ledger). Auto calculates intra-state CGST+SGST vs inter-state IGST with round-off.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3 class="feature-name">Low Stock & Expiry Alerts</h3>
+        <p class="feature-desc">
+          Never sell an expired medicine or packet again. Morning scans alert you on batches expiring within 7 days and 30 days, plus auto reorder triggers.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3 class="feature-name">1-Tap WhatsApp Reorder</h3>
+        <p class="feature-desc">
+          Generate pre-filled Purchase Orders (PO) for your local suppliers with item quantities and send them directly over WhatsApp with 1 click.
+        </p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3 class="feature-name">Real-Time Profit & Loss</h3>
+        <p class="feature-desc">
+          Track today's total revenue, profit margin (Revenue minus Cost of Goods Sold), and total store inventory valuation at both Cost Price and MRP.
+        </p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3 class="feature-name">Crowdsourced Barcode Master</h3>
+        <p class="feature-desc">
+          If any store in India has scanned a barcode before, your app detects it instantly from the Global Master database at zero AI delay!
+        </p>
+      </div>
+    </div>
+
+    <!-- Language Banner -->
+    <div class="languages-banner" id="languages">
+      <div class="lang-text">
+        <h3>🇮🇳 Native Multi-Language Support</h3>
+        <p>Switch between languages instantly with 1 tap inside the profile settings.</p>
+      </div>
+      <div class="lang-tags">
+        <div class="lang-pill">English</div>
+        <div class="lang-pill">हिन्दी (Hindi)</div>
+        <div class="lang-pill">मराठी (Marathi)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Softgenix Section -->
+  <section class="contact-section" id="contact">
+    <div class="contact-card">
+      <span class="contact-badge">Developed & Supported By</span>
+      <h2 class="company-title">Softgenix IT Solutions</h2>
+      <p class="creator-lead">Lead Architect & Developer: Keyur Sanglikar</p>
+      <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">
+        Softgenix IT Solutions provides custom mobile applications, cloud billing software, and AI-powered automation systems for small, medium, and enterprise businesses across Maharashtra and India.
+      </p>
+
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-info-title">Phone / WhatsApp</div>
+            <div class="contact-info-val">
+              <a href="tel:9518721792">+91 9518721792</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-info-title">Office Location</div>
+            <div class="contact-info-val">Pratap Ganj Peth, Satara, Maharashtra</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-info-title">Quick Connect</div>
+            <div class="contact-info-val">
+              <a href="https://wa.me/919518721792?text=Hello%20Softgenix%20IT%20Solutions" target="_blank" style="color: #25D366;">
+                Message on WhatsApp &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 <strong>StockWise</strong> by <strong>Softgenix IT Solutions</strong> (Keyur Sanglikar). All rights reserved.</p>
+    <p style="margin-top: 6px;">Pratap Ganj Peth, Satara, Maharashtra • Contact: <a href="tel:9518721792">+91 9518721792</a></p>
+  </footer>
+
+</body>
+</html>

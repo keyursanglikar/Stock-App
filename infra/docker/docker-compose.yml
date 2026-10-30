@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: stockwise-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: stockwise_db
+      MYSQL_USER: stockwise_user
+      MYSQL_PASSWORD: stockwise_secure_pass_2026
+      MYSQL_ROOT_PASSWORD: stockwise_root_pass_2026
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  redis:
+    image: redis:7-alpine
+    container_name: stockwise-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: stockwise-backend
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    environment:
+      DB_HOST: db
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../backend:/app
+    depends_on:
+      - db
+      - redis
+
+  celery_worker:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: stockwise-celery-worker
+    restart: unless-stopped
+    command: celery -A stockwise worker --loglevel=info -c 4
+    env_file:
+      - ../.env
+    environment:
+      DB_HOST: db
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+    volumes:
+      - ../backend:/app
+    depends_on:
+      - db
+      - redis
+      - backend
+
+  celery_beat:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: stockwise-celery-beat
+    restart: unless-stopped
+    command: celery -A stockwise beat --loglevel=info
+    env_file:
+      - ../.env
+    environment:
+      DB_HOST: db
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+    volumes:
+      - ../backend:/app
+    depends_on:
+      - db
+      - redis
+      - backend
+
+volumes:
+  mysql_data:
+  redis_data:
