@@ -7,16 +7,27 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
       "backgroundColor": "#FF7A00"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.softgenix.stockwise",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "StockWise requires camera access to scan product packaging, barcodes, and wholesale invoices for instant AI inventory logging.",
+        "NSPhotoLibraryUsageDescription": "StockWise requires photo library access to upload invoices or packaging photos for AI stock intake.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FF7A00"
       },
-      "package": "com.stockwise.app",
+      "package": "com.softgenix.stockwise",
+      "versionCode": 1,
       "permissions": [
         "CAMERA",
         "READ_EXTERNAL_STORAGE",
