@@ -9,60 +9,87 @@ import {
   CheckCircle2, 
   Zap, 
   Clock, 
-  Globe, 
   MessageSquare,
   BarChart3,
-  Smartphone
+  Smartphone,
+  ScanLine,
+  RefreshCw,
+  Award
 } from 'lucide-react';
 
-const translations = {
+const content = {
   en: {
-    heroBadge: '✨ 100% Free Forever • Multi-Language • Built for India',
-    heroTitle: 'Smart Stock & Expiry Manager with',
-    heroTitleHighlight: 'Gemini AI Vision',
-    heroDesc: 'Eliminate stock expiry loss and manual billing hassles. Instant batch tracking, AI packaging camera scan, multi-lingual support, and quick POS billing for Indian Kiranas, Medicals & Retailers.',
-    downloadBtn: 'Download Android APK (Free)',
-    callBtn: 'Call: 9518721792',
-    waBtn: 'WhatsApp Inquiry',
-    freeFeature1: 'Zero subscription charges — 100% Free SaaS',
-    freeFeature2: 'Offline-ready SQLite local sync with cloud backup',
-    freeFeature3: 'Camera AI packaging scan powered by Google Gemini',
-    featuresTitle: 'Supercharge Your Retail Shop',
-    featuresSub: 'Tailor-made for Kirana, Medical/Pharma, Hardware & Mini-Marts across Maharashtra & India.',
-    f1Title: 'Gemini AI Vision Ingest',
-    f1Desc: 'Point phone camera at carton labels or wholesale invoices. AI instantly extracts batch number, expiry date, and MRP.',
-    f2Title: 'FEFO Expiry Protection',
-    f2Desc: 'First-Expiring, First-Out alerts ensure expiring inventory is sold first, saving thousands of rupees in unsellable stock.',
-    f3Title: 'Fast POS & Thermal Bills',
-    f3Desc: 'Scan barcodes or search items with quick touch POS. Generate professional bills and send receipts directly on WhatsApp.',
-    f4Title: 'Marathi, Hindi & English',
-    f4Desc: 'Seamless one-tap language switching designed so store staff, helpers, and owners can operate comfortably.',
-    f5Title: 'Multi-Tenant Security',
-    f5Desc: 'Your inventory data is encrypted and partitioned. Manage multiple store branches with centralized owner analytics.',
-    f6Title: 'Real-time Stock Ledger',
-    f6Desc: 'Concurrency-safe double-entry ledger prevents inventory mismatch and keeps accounts 100% audit-compliant.',
-    langSectionTitle: 'Proudly Supporting Regional Indian Languages',
-    langSectionDesc: 'Switch languages instantly inside the app with a single tap. Staff and operators can use Marathi or Hindi anytime.',
-    companyTitle: 'Crafted & Supported by Softgenix IT Solutions',
-    companyDesc: 'We deliver cutting-edge software solutions to empower local small and medium businesses.',
+    badge: '100% Free Forever • Multi-Language • Powered by Gemini AI',
+    titleMain: 'India’s #1 Smart Stock & Expiry Manager with',
+    titleHighlight: 'Gemini AI Vision',
+    desc: 'Eliminate stock expiry loss and manual billing hassles. Instant batch tracking, camera AI packaging scan, multi-lingual support, and high-speed POS billing tailored for Kiranas, Medical stores, and Retailers.',
+    downloadApk: 'Download APK (v1.0 Free)',
+    downloadSub: 'Direct Android APK • No Google Play needed',
+    callNow: 'Call 9518721792',
+    waInquiry: 'WhatsApp Inquiry',
+    freePoint1: 'Zero Monthly or Annual Charges — 100% Free SaaS',
+    freePoint2: 'Offline-Ready SQLite sync with secure cloud backup',
+    freePoint3: 'Live Camera packaging reading powered by Google Gemini',
+    
+    // Stats
+    stat1Val: '100%', stat1Lbl: 'Free for SMBs',
+    stat2Val: '0 Sec', stat2Lbl: 'Offline POS Billing',
+    stat3Val: '99.4%', stat3Lbl: 'AI Vision Accuracy',
+    stat4Val: '3 Languages', stat4Lbl: 'English, मराठी, हिन्दी',
+
+    // Features
+    featTag: 'POWERFUL RETAIL ENGINE',
+    featTitle: 'Everything Your Shop Needs to Grow',
+    featSub: 'Designed specifically for the fast-paced daily workflow of Indian retail shops.',
+    f1Title: 'Gemini AI Packaging Vision',
+    f1Desc: 'Scan carton labels and wholesale invoices with your phone camera. Gemini AI extracts batch numbers, expiry dates, and MRP in 2 seconds.',
+    f2Title: 'FEFO Expiry Shield',
+    f2Desc: 'Automated First-Expiring, First-Out picking alerts ensure older stock is sold before it expires, saving thousands in inventory loss.',
+    f3Title: 'Superfast POS & WhatsApp Bills',
+    f3Desc: 'Scan barcodes or search items with single-tap quick billing. Generate GST/Non-GST thermal bills and share receipts directly to customer WhatsApp.',
+    f4Title: 'Marathi, Hindi & English UI',
+    f4Desc: 'Seamless one-tap language switching so your counter staff, helpers, and shop owners can operate comfortably in their preferred language.',
+    f5Title: 'Multi-Store & Role Security',
+    f5Desc: 'Secure multi-tenant data architecture. Manage multiple godowns or branches with strict owner vs cashier permission controls.',
+    f6Title: 'Audit-Safe Stock Ledger',
+    f6Desc: 'Every stock movement, sale, return, and wastage is recorded in an immutable double-entry ledger with real-time profit tracking.',
+
+    // Regional
+    langTitle: 'Proudly Supporting Regional Indian Languages',
+    langDesc: 'Built with pride for merchants across Maharashtra and India. Switch between English, Marathi, and Hindi seamlessly anytime in the app.',
+    
+    // Company
+    devTag: 'OFFICIAL DEVELOPER & IT PARTNER',
+    devTitle: 'Softgenix IT Solutions (Satara)',
+    devDesc: 'We create high-performance web, mobile, and AI solutions to empower modern businesses. For custom enterprise software, mobile apps, or cloud integrations, reach out to Keyur Sanglikar directly.',
     founder: 'Keyur Sanglikar',
-    founderRole: 'Founder & Lead Engineer',
+    founderRole: 'Founder & Lead Software Architect',
     address: 'Pratap Ganj Peth, Satara, Maharashtra 415002',
     phone: '+91 9518721792'
   },
   mr: {
-    heroBadge: '✨ १००% मोफत ॲप • मराठी भाषा सपोर्ट • भारतीय व्यापाऱ्यांसाठी',
-    heroTitle: 'किराणा व मेडिकलसाठी स्मार्ट स्टॉक व',
-    heroTitleHighlight: 'जेमिनी AI स्कॅनर',
-    heroDesc: 'एक्सपायरीचे नुकसान थांबवा आणि जलद बिलिंग करा. बॅच ट्रॅकिंग, मोबाईल कॅमेरा AI बिल स्कॅनर, मराठी भाषा सपोर्ट आणि सोपे बिलिंग.',
-    downloadBtn: 'मोफत अँड्रॉइड APK डाउनलोड करा',
-    callBtn: 'कॉल करा: 9518721792',
-    waBtn: 'व्हॉट्सॲपवर संपर्क करा',
-    freeFeature1: 'कोणतेही मासिक शुल्क नाही — कायमस्वरूपी मोफत',
-    freeFeature2: 'इंटरनेट नसतानाही चालणारे ऑफलाइन सिंक',
-    freeFeature3: 'गुगल जेमिनी AI द्वारे ऑटोमॅटिक बिल वाचन',
-    featuresTitle: 'तुमच्या दुकानासाठी आधुनिक फीचर्स',
-    featuresSub: 'सातारा, महाराष्ट्र आणि संपूर्ण भारतातील किराणा, मेडिकल आणि रिटेल दुकानांसाठी खास बनवले आहे.',
+    badge: '१००% मोफत ॲप • मराठी भाषा सपोर्ट • जेमिनी AI समर्थित',
+    titleMain: 'किराणा व मेडिकल दुकानांसाठी आधुनिक स्टॉक व',
+    titleHighlight: 'जेमिनी AI स्कॅनर',
+    desc: 'मालाची मुदत संपल्यामुळे होणारे नुकसान पूर्णपणे थांबवा. मोबाईल कॅमेरा AI बिल स्कॅनर, बॅच व एक्सपायरी ट्रॅकिंग, मराठी भाषा आणि झटपट बिलिंग.',
+    downloadApk: 'मोफत अँड्रॉइड APK डाउनलोड करा',
+    downloadSub: 'थेट अँड्रॉइड APK • प्लेस्टोअरची गरज नाही',
+    callNow: 'कॉल करा: 9518721792',
+    waInquiry: 'व्हॉट्सॲप मेसेज करा',
+    freePoint1: 'कोणतेही मासिक शुल्क नाही — १००% मोफत ॲप',
+    freePoint2: 'इंटरनेट नसतानाही चालणारे ऑफलाइन सिंक',
+    freePoint3: 'गुगल जेमिनी AI द्वारे ऑटोमॅटिक बिल वाचन',
+
+    // Stats
+    stat1Val: '१००%', stat1Lbl: 'कायमस्वरूपी मोफत',
+    stat2Val: '० सेकंद', stat2Lbl: 'ऑफलाइन फास्ट बिलिंग',
+    stat3Val: '९९.४%', stat3Lbl: 'AI अचूकता',
+    stat4Val: '३ भाषा', stat4Lbl: 'मराठी, हिन्दी, English',
+
+    // Features
+    featTag: 'व्यापाऱ्यांसाठी खास फीचर्स',
+    featTitle: 'तुमच्या दुकानाचा कारभार करा सुलभ व डिजिटल',
+    featSub: 'सातारा, महाराष्ट्र आणि संपूर्ण भारतातील किरकोळ व घाऊक व्यापाऱ्यांसाठी बनवलेले ॲप.',
     f1Title: 'कॅमेरा AI बिल वाचन',
     f1Desc: 'खरेदी बिल किंवा बॉक्सवर कॅमेरा धरा. जेमिनी AI लगेच बॅच नंबर, एक्सपायरी तारीख आणि किंमत भरून घेते.',
     f2Title: 'एक्सपायरी अलर्ट व बचत',
@@ -71,37 +98,52 @@ const translations = {
     f3Desc: 'बारकोड स्कॅन करा आणि काही सेकंदात पक्के बिल ग्राहकांच्या व्हॉट्सॲपवर पाठवा.',
     f4Title: 'मराठी, हिंदी व इंग्रजी',
     f4Desc: 'दुकानातील कोणालाही चालवता यावे यासाठी एका क्लिकवर मराठी किंवा हिंदी भाषा बदला.',
-    f5Title: 'सुरक्षित डेटा',
-    f5Desc: 'तुमचा सर्व स्टॉक डेटा सुरक्षित आणि क्लाउडवर बॅकअप केलेला राहतो.',
+    f5Title: 'सुरक्षित डेटा व बॅकअप',
+    f5Desc: 'तुमचा सर्व स्टॉक डेटा सुरक्षित आणि क्लाउडवर सुरक्षित बॅकअप केलेला राहतो.',
     f6Title: 'दररोजचा हिशोब व नफा',
     f6Desc: 'कोणता माल किती विकला गेला आणि किती नफा झाला याचा रोजचा तपशील सहज मिळतो.',
-    langSectionTitle: 'आपल्या हक्काच्या मराठी भाषेत उपलब्ध',
-    langSectionDesc: 'ॲपमध्ये कधीही एका क्लिकवर मराठी, हिंदी किंवा इंग्रजी भाषा निवडा.',
-    companyTitle: 'सॉफ्टजेनिक्स आयटी सोल्युशन्स (सातारा)',
-    companyDesc: 'स्थानिक भारतीय व्यापाऱ्यांना आधुनिक तंत्रज्ञानाने सक्षम बनवण्यासाठी आम्ही कटिबद्ध आहोत.',
+
+    // Regional
+    langTitle: 'आपल्या हक्काच्या मराठी भाषेत उपलब्ध',
+    langDesc: 'दुकानातील कामगार किंवा मदतनीस कोणालाही सहज वापरता यावे यासाठी ॲपमध्ये मराठी भाषा सपोर्ट देण्यात आला आहे.',
+
+    // Company
+    devTag: 'अधिकृत डेव्हलपर व तंत्रज्ञान भागीदार',
+    devTitle: 'सॉफ्टजेनिक्स आयटी सोल्युशन्स (सातारा)',
+    devDesc: 'स्थानिक भारतीय व्यापाऱ्यांना आधुनिक तंत्रज्ञानाने सक्षम बनवण्यासाठी आम्ही कटिबद्ध आहोत. नवीन सॉफ्टवेअर किंवा ॲप बनवण्यासाठी संपर्क करा.',
     founder: 'केयूर सांगलीकर',
     founderRole: 'संस्थापक व मुख्य तंत्रज्ञान अधिकारी',
     address: 'प्रताप गंज पेठ, सातारा, महाराष्ट्र ४१५००२',
     phone: '+91 9518721792'
   },
   hi: {
-    heroBadge: '✨ 100% फ्री ऍप • हिंदी और मराठी सपोर्ट • भारतीय दुकानदारों के लिए',
-    heroTitle: 'किराना और मेडिकल के लिए स्मार्ट स्टॉक व',
-    heroTitleHighlight: 'जेमिनी AI स्कैनर',
-    heroDesc: 'एक्सपायरी का नुकसान रोकें और तेज बिलिंग करें। ऑटोमैटिक बैच ट्रैकिंग, कैमरा AI बिल स्कैनर, हिंदी सपोर्ट और आसान बिलिंग।',
-    downloadBtn: 'मुफ्त एंड्रॉइड APK डाउनलोड करें',
-    callBtn: 'कॉल करें: 9518721792',
-    waBtn: 'व्हाट्सएप संपर्क करें',
-    freeFeature1: 'कोई मासिक शुल्क नहीं — 100% पूरी तरह मुफ्त',
-    freeFeature2: 'बिना इंटरनेट भी काम करने वाला ऑफलाइन सिंक',
-    freeFeature3: 'गूगल जेमिनी AI द्वारा ऑटोमैटिक बिल स्कैन',
-    featuresTitle: 'अपनी दुकान को बनाएं स्मार्ट',
-    featuresSub: 'किराना, मेडिकल, हार्डवेयर और सभी रिटेल दुकानों के लिए खास रूप से तैयार।',
+    badge: '100% फ्री ऍप • हिंदी और मराठी सपोर्ट • जेमिनी AI समर्थित',
+    titleMain: 'किराना और मेडिकल के लिए स्मार्ट स्टॉक व',
+    titleHighlight: 'जेमिनी AI स्कैनर',
+    desc: 'एक्सपायरी का नुकसान रोकें और तेज बिलिंग करें। ऑटोमैटिक बैच ट्रैकिंग, कैमरा AI बिल स्कैनर, हिंदी सपोर्ट और आसान बिलिंग।',
+    downloadApk: 'मुफ्त एंड्रॉइड APK डाउनलोड करें',
+    downloadSub: 'डायरेक्ट एंड्रॉइड APK • प्लेस्टोर की आवश्यकता नहीं',
+    callNow: 'कॉल करें: 9518721792',
+    waInquiry: 'व्हाट्सएप पूछताछ',
+    freePoint1: 'कोई मासिक शुल्क नहीं — 100% पूरी तरह मुफ्त',
+    freePoint2: 'बिना इंटरनेट भी काम करने वाला ऑफलाइन सिंक',
+    freePoint3: 'गूगल जेमिनी AI द्वारा ऑटोमैटिक बिल स्कैन',
+
+    // Stats
+    stat1Val: '100%', stat1Lbl: 'आजीवन मुफ्त',
+    stat2Val: '0 सेकंड', stat2Lbl: 'ऑफलाइन फास्ट बिलिंग',
+    stat3Val: '99.4%', stat3Lbl: 'AI सटीकता',
+    stat4Val: '3 भाषाएं', stat4Lbl: 'हिंदी, मराठी, English',
+
+    // Features
+    featTag: 'दुकानदारों के लिए खास सुविधाएं',
+    featTitle: 'अपनी दुकान को बनाएं सुपरफास्ट और स्मार्ट',
+    featSub: 'किराना, मेडिकल, हार्डवेयर और सभी रिटेल दुकानों के लिए खास रूप से तैयार।',
     f1Title: 'कैमरा AI बिल स्कैन',
     f1Desc: 'थोक बिल या डिब्बे पर कैमरा रखें। AI तुरंत बैच नंबर, एक्सपायरी डेट और एमआरपी डिटेक्ट कर लेता है।',
     f2Title: 'एक्सपायरी से सुरक्षा',
     f2Desc: 'जल्द एक्सपायर होने वाला माल पहले बिकेगा, जिससे इन्वेंट्री का नुकसान शून्य हो जाएगा।',
-    f3Title: 'फास्ट POS बिलिंग',
+    f3Title: 'फास्ट POS व व्हाट्सएप बिल',
     f3Desc: 'बारकोड स्कैन करें और कुछ ही सेकंड में बिल बनाकर ग्राहक को व्हाट्सएप रसीद भेजें।',
     f4Title: 'हिंदी, मराठी और इंग्लिश',
     f4Desc: 'दुकान का कोई भी सहायक या कर्मचारी आसानी से अपनी भाषा में ऍप चला सकता है।',
@@ -109,10 +151,15 @@ const translations = {
     f5Desc: 'आपका सारा डेटा क्लाउड पर एन्क्रिप्टेड और सुरक्षित रहता है।',
     f6Title: 'स्टॉक रिपोर्ट व मुनाफा',
     f6Desc: 'दैनिक बिक्री और लाभ-हानि का पूरा हिसाब किताब एक ही डैशबोर्ड पर।',
-    langSectionTitle: 'क्षेत्रीय भारतीय भाषाओं में आसान संचालन',
-    langSectionDesc: 'ऍप में कभी भी एक क्लिक से हिंदी, मराठी या अंग्रेजी भाषा का चयन करें।',
-    companyTitle: 'सॉफ्टजेनिक्स आईटी सोल्यूशंस द्वारा विकसित',
-    companyDesc: 'हम भारतीय छोटे और मध्यम व्यापारियों को आधुनिक सॉफ्टवेयर द्वारा सशक्त बनाते हैं।',
+
+    // Regional
+    langTitle: 'क्षेत्रीय भारतीय भाषाओं में आसान संचालन',
+    langDesc: 'ऍप में कभी भी एक क्लिक से हिंदी, मराठी या अंग्रेजी भाषा का चयन करें।',
+
+    // Company
+    devTag: 'डेवलपर और टेक्नोलॉजी पार्टनर',
+    devTitle: 'सॉफ्टजेनिक्स आईटी सोल्यूशंस (सातारा)',
+    devDesc: 'हम भारतीय छोटे और मध्यम व्यापारियों को आधुनिक सॉफ्टवेयर द्वारा सशक्त बनाते हैं। कस्टमाइज्ड सॉफ्टवेयर के लिए संपर्क करें।',
     founder: 'केयूर सांगलीकर',
     founderRole: 'फाउंडर एवं प्रमुख इंजीनियर',
     address: 'प्रताप गंज पेठ, सातारा, महाराष्ट्र ४१५००२',
@@ -122,267 +169,307 @@ const translations = {
 
 export default function App() {
   const [lang, setLang] = useState<'en' | 'mr' | 'hi'>('en');
-  const t = translations[lang];
+  const t = content[lang];
+
+  const handleDownload = () => {
+    // Robust direct download trigger
+    const link = document.createElement('a');
+    link.href = '/downloads/StockWise-v1.0.apk';
+    link.setAttribute('download', 'StockWise-v1.0.apk');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
-    <div>
-      {/* Top Navigation */}
-      <nav className="navbar">
-        <div className="container nav-container">
-          <div className="brand">
-            <div className="logo-badge">S</div>
-            <div className="brand-text">
-              <h1>StockWise AI</h1>
-              <span>Softgenix IT Solutions</span>
+    <div className="landing-root">
+      {/* Navbar */}
+      <header className="header-nav">
+        <div className="container nav-wrapper">
+          <a href="#" className="brand-link">
+            <div className="brand-icon">S</div>
+            <div>
+              <div className="brand-title">StockWise AI</div>
+              <div className="brand-sub">Softgenix IT Solutions</div>
             </div>
-          </div>
+          </a>
 
-          <div className="nav-links">
-            <div style={{ display: 'flex', gap: '6px' }}>
+          <div className="nav-controls">
+            <div className="lang-switch">
               <button 
-                className={`lang-pill-btn ${lang === 'en' ? 'active' : ''}`}
+                className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
                 onClick={() => setLang('en')}
               >
                 English
               </button>
               <button 
-                className={`lang-pill-btn ${lang === 'mr' ? 'active' : ''}`}
+                className={`lang-btn ${lang === 'mr' ? 'active' : ''}`}
                 onClick={() => setLang('mr')}
               >
                 मराठी
               </button>
               <button 
-                className={`lang-pill-btn ${lang === 'hi' ? 'active' : ''}`}
+                className={`lang-btn ${lang === 'hi' ? 'active' : ''}`}
                 onClick={() => setLang('hi')}
               >
                 हिन्दी
               </button>
             </div>
 
-            <a 
-              href="/downloads/StockWise-v1.0.apk" 
-              download="StockWise-v1.0.apk"
-              className="btn-primary"
-              style={{ padding: '8px 18px', fontSize: '13px' }}
-            >
-              <Download size={16} /> APK Download
-            </a>
+            <button onClick={handleDownload} className="btn-cta-main" style={{ padding: '10px 18px', fontSize: '14px' }}>
+              <Download size={16} /> APK
+            </button>
           </div>
         </div>
-      </nav>
+      </header>
 
       {/* Hero Section */}
-      <section className="hero">
-        <div className="container hero-grid">
+      <section className="hero-section">
+        <div className="container hero-layout">
           <div>
-            <div className="badge-tag">
+            <div className="pill-announcement">
               <Sparkles size={16} />
-              <span>{t.heroBadge}</span>
+              <span>{t.badge}</span>
             </div>
-            
-            <h1 className="hero-title">
-              {t.heroTitle} <span>{t.heroTitleHighlight}</span>
+
+            <h1 className="hero-heading">
+              {t.titleMain} <span className="gradient-text">{t.titleHighlight}</span>
             </h1>
 
-            <p className="hero-subtitle">
-              {t.heroDesc}
+            <p className="hero-description">
+              {t.desc}
             </p>
 
-            <div className="hero-actions">
-              <a 
-                href="/downloads/StockWise-v1.0.apk" 
-                download="StockWise-v1.0.apk" 
-                className="btn-primary"
-              >
+            <div className="cta-group">
+              <button onClick={handleDownload} className="btn-cta-main">
                 <Download size={20} />
-                <span>{t.downloadBtn}</span>
-              </a>
+                <span>{t.downloadApk}</span>
+              </button>
 
-              <a 
-                href="tel:9518721792" 
-                className="btn-secondary"
-              >
+              <a href="tel:9518721792" className="btn-cta-secondary">
                 <Phone size={18} />
-                <span>{t.callBtn}</span>
+                <span>{t.callNow}</span>
               </a>
 
               <a 
-                href="https://wa.me/919518721792?text=Hi%20Keyur,%20I%20am%20interested%20in%20the%20free%20StockWise%20app%20for%20my%20store." 
+                href="https://wa.me/919518721792?text=Hello%20Keyur,%20I%20am%20interested%20in%20the%20free%20StockWise%20app%20for%20my%20business." 
                 target="_blank" 
                 rel="noreferrer"
-                className="btn-secondary"
-                style={{ color: '#059669', borderColor: '#A7F3D0' }}
+                className="btn-cta-wa"
               >
                 <MessageSquare size={18} />
-                <span>{t.waBtn}</span>
+                <span>{t.waInquiry}</span>
               </a>
             </div>
 
-            <div className="highlight-checks">
-              <div className="check-item">
-                <CheckCircle2 size={18} className="check-icon" />
-                <span>{t.freeFeature1}</span>
+            <div className="trust-badges">
+              <div className="badge-item">
+                <CheckCircle2 size={18} />
+                <span>{t.freePoint1}</span>
               </div>
-              <div className="check-item">
-                <CheckCircle2 size={18} className="check-icon" />
-                <span>{t.freeFeature2}</span>
+              <div className="badge-item">
+                <CheckCircle2 size={18} />
+                <span>{t.freePoint2}</span>
               </div>
-              <div className="check-item">
-                <CheckCircle2 size={18} className="check-icon" />
-                <span>{t.freeFeature3}</span>
+              <div className="badge-item">
+                <CheckCircle2 size={18} />
+                <span>{t.freePoint3}</span>
               </div>
             </div>
           </div>
 
-          <div className="hero-phone-mockup">
-            <div className="phone-card">
+          <div className="hero-mockup-wrap">
+            <div className="phone-outer-frame">
               <img 
                 src="/assets/app-screens.png" 
                 alt="StockWise App Screens Mockup" 
-                className="phone-img"
+                className="phone-screen-img"
               />
+            </div>
+            
+            <div className="float-tag">
+              <div className="float-tag-icon">
+                <Award size={20} />
+              </div>
+              <div>
+                <div style={{ fontSize: '11px', color: '#64748B', fontWeight: 700 }}>VERIFIED QUALITY</div>
+                <div style={{ fontSize: '14px', fontWeight: 800, color: '#0F172A' }}>100% Free SaaS</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="section">
+      {/* Stats Ribbon */}
+      <section className="stats-ribbon">
+        <div className="container stats-grid">
+          <div>
+            <div className="stat-num">{t.stat1Val}</div>
+            <div className="stat-label">{t.stat1Lbl}</div>
+          </div>
+          <div>
+            <div className="stat-num">{t.stat2Val}</div>
+            <div className="stat-label">{t.stat2Lbl}</div>
+          </div>
+          <div>
+            <div className="stat-num">{t.stat3Val}</div>
+            <div className="stat-label">{t.stat3Lbl}</div>
+          </div>
+          <div>
+            <div className="stat-num">{t.stat4Val}</div>
+            <div className="stat-label">{t.stat4Lbl}</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="features-section">
         <div className="container">
-          <div className="section-title">
-            <h2>{t.featuresTitle}</h2>
-            <p>{t.featuresSub}</p>
+          <div className="section-head">
+            <span className="section-tag">{t.featTag}</span>
+            <h2 className="section-title">{t.featTitle}</h2>
+            <p className="section-subtitle">{t.featSub}</p>
           </div>
 
-          <div className="grid-3">
-            <div className="feature-card">
-              <div className="feature-icon-box">
-                <Sparkles size={28} />
+          <div className="features-grid">
+            <div className="feature-box">
+              <div className="feature-box-icon icon-orange">
+                <ScanLine size={30} />
               </div>
               <h3>{t.f1Title}</h3>
               <p>{t.f1Desc}</p>
             </div>
 
-            <div className="feature-card">
-              <div className="feature-icon-box">
-                <Clock size={28} />
+            <div className="feature-box">
+              <div className="feature-box-icon icon-amber">
+                <Clock size={30} />
               </div>
               <h3>{t.f2Title}</h3>
               <p>{t.f2Desc}</p>
             </div>
 
-            <div className="feature-card">
-              <div className="feature-icon-box">
-                <Zap size={28} />
+            <div className="feature-box">
+              <div className="feature-box-icon icon-blue">
+                <Zap size={30} />
               </div>
               <h3>{t.f3Title}</h3>
               <p>{t.f3Desc}</p>
             </div>
 
-            <div className="feature-card">
-              <div className="feature-icon-box">
-                <Globe size={28} />
+            <div className="feature-box">
+              <div className="feature-box-icon icon-green">
+                <RefreshCw size={30} />
               </div>
               <h3>{t.f4Title}</h3>
               <p>{t.f4Desc}</p>
             </div>
 
-            <div className="feature-card">
-              <div className="feature-icon-box">
-                <ShieldCheck size={28} />
+            <div className="feature-box">
+              <div className="feature-box-icon icon-purple">
+                <ShieldCheck size={30} />
               </div>
               <h3>{t.f5Title}</h3>
               <p>{t.f5Desc}</p>
             </div>
 
-            <div className="feature-card">
-              <div className="feature-icon-box">
-                <BarChart3 size={28} />
+            <div className="feature-box">
+              <div className="feature-box-icon icon-red">
+                <BarChart3 size={30} />
               </div>
               <h3>{t.f6Title}</h3>
               <p>{t.f6Desc}</p>
             </div>
           </div>
 
-          {/* Regional Language Banner */}
-          <div className="lang-banner">
+          {/* Regional Banner */}
+          <div className="regional-banner">
             <div>
-              <h3 style={{ fontSize: '26px', fontWeight: 800, marginBottom: '12px' }}>
-                {t.langSectionTitle}
-              </h3>
-              <p style={{ color: '#94A3B8', fontSize: '16px', lineHeight: 1.6 }}>
-                {t.langSectionDesc}
-              </p>
+              <h3>{t.langTitle}</h3>
+              <p>{t.langDesc}</p>
             </div>
-            <div className="lang-chips">
-              <div className="lang-chip">🇮🇳 English (Global)</div>
-              <div className="lang-chip">🚩 मराठी (महाराष्ट्र)</div>
-              <div className="lang-chip">🇮🇳 हिन्दी (भारत)</div>
-              <div className="lang-chip">⚡ 1-Tap Toggle</div>
+            <div className="lang-grid-cards">
+              <div className="lang-card-pill">
+                <div className="lang-card-title">🚩 मराठी (Marathi)</div>
+                <div className="lang-card-sub">महाराष्ट्रातील व्यापाऱ्यांसाठी</div>
+              </div>
+              <div className="lang-card-pill">
+                <div className="lang-card-title">🇮🇳 हिन्दी (Hindi)</div>
+                <div className="lang-card-sub">उत्तर व मध्य भारतासाठी</div>
+              </div>
+              <div className="lang-card-pill">
+                <div className="lang-card-title">🌐 English</div>
+                <div className="lang-card-sub">Standard Universal Mode</div>
+              </div>
+              <div className="lang-card-pill">
+                <div className="lang-card-title">⚡ Instant Toggle</div>
+                <div className="lang-card-sub">One-tap language shift</div>
+              </div>
             </div>
           </div>
 
-          {/* Softgenix IT Solutions Contact Info Card */}
-          <div className="contact-section">
-            <div className="contact-grid">
-              <div>
-                <span style={{ color: 'var(--primary)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', fontSize: '12px' }}>
-                  DEVELOPED & MAINTAINED BY
-                </span>
-                <h3 style={{ fontSize: '28px', fontWeight: 800, marginTop: '8px', marginBottom: '14px' }}>
-                  {t.companyTitle}
-                </h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '15px', lineHeight: 1.6, marginBottom: '24px' }}>
-                  {t.companyDesc} Contact Keyur Sanglikar for custom business software, mobile app development, or tailored ERP integrations.
-                </p>
+          {/* Softgenix Profile Section */}
+          <div className="company-showcase">
+            <div className="company-layout">
+              <div className="company-left">
+                <span className="section-tag">{t.devTag}</span>
+                <h2>{t.devTitle}</h2>
+                <p>{t.devDesc}</p>
 
-                <div style={{ display: 'flex', gap: '16px' }}>
-                  <a href="tel:9518721792" className="btn-primary">
+                <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+                  <a href="tel:9518721792" className="btn-cta-main">
                     <Phone size={18} />
                     <span>Call 9518721792</span>
                   </a>
                   <a 
-                    href="https://wa.me/919518721792?text=Hello%20Keyur%20Sanglikar,%20I%20would%20like%20to%20discuss%20a%20software%20project." 
+                    href="https://wa.me/919518721792?text=Hello%20Keyur,%20I%20would%20like%20to%20discuss%20a%20software%20requirement." 
                     target="_blank" 
                     rel="noreferrer"
-                    className="btn-secondary"
+                    className="btn-cta-wa"
                   >
                     <MessageSquare size={18} />
-                    <span>WhatsApp</span>
+                    <span>Chat on WhatsApp</span>
                   </a>
                 </div>
               </div>
 
-              <div className="contact-card">
-                <div className="contact-row">
-                  <Building size={20} />
-                  <div>
-                    <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600 }}>Organization</div>
-                    <div style={{ fontWeight: 700 }}>Softgenix IT Solutions</div>
+              <div className="company-contact-card">
+                <div className="contact-detail-row">
+                  <div className="contact-detail-icon">
+                    <Building size={22} />
+                  </div>
+                  <div className="contact-detail-info">
+                    <div className="label">Company</div>
+                    <div className="val">Softgenix IT Solutions</div>
                   </div>
                 </div>
 
-                <div className="contact-row">
-                  <Smartphone size={20} />
-                  <div>
-                    <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600 }}>Contact Person</div>
-                    <div style={{ fontWeight: 700 }}>{t.founder} ({t.founderRole})</div>
+                <div className="contact-detail-row">
+                  <div className="contact-detail-icon">
+                    <Smartphone size={22} />
+                  </div>
+                  <div className="contact-detail-info">
+                    <div className="label">Lead Engineer</div>
+                    <div className="val">{t.founder} ({t.founderRole})</div>
                   </div>
                 </div>
 
-                <div className="contact-row">
-                  <Phone size={20} />
-                  <div>
-                    <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600 }}>Mobile & WhatsApp</div>
-                    <div style={{ fontWeight: 700 }}>{t.phone}</div>
+                <div className="contact-detail-row">
+                  <div className="contact-detail-icon">
+                    <Phone size={22} />
+                  </div>
+                  <div className="contact-detail-info">
+                    <div className="label">Direct Phone & WhatsApp</div>
+                    <div className="val">{t.phone}</div>
                   </div>
                 </div>
 
-                <div className="contact-row">
-                  <MapPin size={20} />
-                  <div>
-                    <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600 }}>Office Address</div>
-                    <div style={{ fontWeight: 700 }}>{t.address}</div>
+                <div className="contact-detail-row">
+                  <div className="contact-detail-icon">
+                    <MapPin size={22} />
+                  </div>
+                  <div className="contact-detail-info">
+                    <div className="label">Headquarters Address</div>
+                    <div className="val">{t.address}</div>
                   </div>
                 </div>
               </div>
@@ -391,12 +478,28 @@ export default function App() {
         </div>
       </section>
 
+      {/* Sticky Mobile Download Bar */}
+      <div className="mobile-bottom-bar">
+        <button onClick={handleDownload} className="btn-cta-main" style={{ flex: 1, justifyContent: 'center' }}>
+          <Download size={18} /> APK (Free)
+        </button>
+        <a href="tel:9518721792" className="btn-cta-secondary" style={{ padding: '14px 18px' }}>
+          <Phone size={18} />
+        </a>
+      </div>
+
       {/* Footer */}
-      <footer>
+      <footer className="site-footer">
         <div className="container">
-          <p>© {new Date().getFullYear()} Softgenix IT Solutions. All rights reserved. Satara, Maharashtra, India.</p>
-          <p style={{ marginTop: '8px', fontSize: '13px', color: '#94A3B8' }}>
-            Built with React, TypeScript & Vite • Optimized for Vercel Deployment
+          <div className="footer-brand">
+            <div className="brand-icon" style={{ width: '32px', height: '32px', fontSize: '18px' }}>S</div>
+            <strong style={{ fontSize: '18px' }}>StockWise AI</strong>
+          </div>
+          <p className="footer-copy">
+            © {new Date().getFullYear()} Softgenix IT Solutions. All rights reserved. Pratap Ganj Peth, Satara, Maharashtra.
+          </p>
+          <p className="footer-subcopy">
+            Built with React & Vite • Optimized for Vercel • Dedicated to Indian Kirana & Retail Commerce
           </p>
         </div>
       </footer>
