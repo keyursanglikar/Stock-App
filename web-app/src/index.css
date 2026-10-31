@@ -29,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -37,6 +38,13 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.landing-root {
+  width: 100%;
   overflow-x: hidden;
 }
 
@@ -53,18 +61,21 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .nav-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 72px;
+  min-height: 72px;
+  padding: 8px 0;
+  gap: 12px;
 }
 
 .brand-link {
@@ -72,6 +83,7 @@ body {
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .brand-icon {
@@ -86,6 +98,7 @@ body {
   font-weight: 800;
   font-size: 24px;
   box-shadow: 0 4px 14px var(--primary-glow);
+  flex-shrink: 0;
 }
 
 .brand-title {
@@ -94,6 +107,7 @@ body {
   color: var(--text-primary);
   letter-spacing: -0.5px;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .brand-sub {
@@ -102,24 +116,27 @@ body {
   color: var(--primary);
   letter-spacing: 0.8px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .nav-controls {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  flex-shrink: 0;
 }
 
 .lang-switch {
   display: flex;
   background: #F1F5F9;
-  padding: 4px;
+  padding: 3px;
   border-radius: 30px;
   border: 1px solid #E2E8F0;
+  flex-shrink: 0;
 }
 
 .lang-btn {
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
@@ -128,6 +145,7 @@ body {
   color: #64748B;
   cursor: pointer;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .lang-btn.active {
@@ -144,6 +162,7 @@ body {
   background: radial-gradient(circle at 80% 20%, rgba(255, 122, 0, 0.08) 0%, rgba(255, 255, 255, 0) 60%),
               radial-gradient(circle at 10% 70%, rgba(59, 130, 246, 0.05) 0%, rgba(255, 255, 255, 0) 50%);
   overflow: hidden;
+  width: 100%;
 }
 
 .hero-layout {
@@ -151,6 +170,7 @@ body {
   grid-template-columns: 1.1fr 0.9fr;
   gap: 40px;
   align-items: center;
+  width: 100%;
 }
 
 .pill-announcement {
@@ -165,6 +185,7 @@ body {
   font-size: 13px;
   font-weight: 700;
   margin-bottom: 24px;
+  max-width: 100%;
 }
 
 .hero-heading {
@@ -174,6 +195,7 @@ body {
   letter-spacing: -1.2px;
   color: var(--text-primary);
   margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
 .hero-heading .gradient-text {
@@ -187,6 +209,7 @@ body {
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 32px;
+  word-wrap: break-word;
 }
 
 .cta-group {
@@ -194,23 +217,26 @@ body {
   flex-wrap: wrap;
   gap: 14px;
   margin-bottom: 32px;
+  width: 100%;
 }
 
 .btn-cta-main {
   background: linear-gradient(135deg, #FF7A00 0%, #E86A00 100%);
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
-  padding: 14px 28px;
+  padding: 14px 26px;
   border-radius: var(--radius-md);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   box-shadow: 0 10px 24px var(--primary-glow);
   transition: all 0.25s ease;
   border: none;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .btn-cta-main:hover {
@@ -228,10 +254,12 @@ body {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   border: 1px solid var(--border-color);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .btn-cta-secondary:hover {
@@ -251,8 +279,10 @@ body {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .btn-cta-wa:hover {
@@ -286,6 +316,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  width: 100%;
 }
 
 .phone-outer-frame {
@@ -345,6 +376,7 @@ body {
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   padding: 36px 0;
+  width: 100%;
 }
 
 .stats-grid {
@@ -371,12 +403,14 @@ body {
 /* Features Section */
 .features-section {
   padding: 90px 0;
+  width: 100%;
 }
 
 .section-head {
   text-align: center;
   max-width: 680px;
   margin: 0 auto 60px;
+  padding: 0 12px;
 }
 
 .section-tag {
@@ -406,6 +440,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  width: 100%;
 }
 
 .feature-box {
@@ -467,6 +502,7 @@ body {
   gap: 40px;
   align-items: center;
   box-shadow: 0 20px 50px rgba(11, 15, 25, 0.25);
+  width: 100%;
 }
 
 .regional-banner h3 {
@@ -522,6 +558,7 @@ body {
   padding: 54px 48px;
   margin-bottom: 80px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+  width: 100%;
 }
 
 .company-layout {
@@ -529,6 +566,7 @@ body {
   grid-template-columns: 1.2fr 0.8fr;
   gap: 48px;
   align-items: center;
+  width: 100%;
 }
 
 .company-left h2 {
@@ -587,6 +625,7 @@ body {
   font-weight: 700;
   color: var(--text-primary);
   margin-top: 2px;
+  word-break: break-word;
 }
 
 /* Sticky Download Bar for Mobile */
@@ -611,6 +650,7 @@ body {
   border-top: 1px solid var(--border-color);
   padding: 50px 0 30px;
   text-align: center;
+  width: 100%;
 }
 
 .footer-brand {
@@ -632,34 +672,41 @@ body {
   color: #94A3B8;
 }
 
-/* Responsive Media Queries */
+/* ========================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ======================================================== */
+
+/* Large Tablets & Small Laptops (max-width: 1024px) */
 @media (max-width: 1024px) {
   .hero-heading {
-    font-size: 40px;
+    font-size: 38px;
+    letter-spacing: -0.8px;
   }
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    gap: 28px;
+  }
+  .regional-banner {
+    padding: 44px 36px;
   }
 }
 
-@media (max-width: 768px) {
-  .nav-wrapper {
-    height: 64px;
-  }
+/* Tablets (max-width: 860px) */
+@media (max-width: 860px) {
   .hero-layout {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 40px;
+    gap: 48px;
   }
-  .hero-heading {
-    font-size: 32px;
+  .hero-mockup-wrap {
+    order: 2;
   }
-  .hero-description {
-    font-size: 16px;
+  .pill-announcement {
+    margin-left: auto;
+    margin-right: auto;
   }
   .cta-group {
     justify-content: center;
@@ -667,26 +714,219 @@ body {
   .trust-badges {
     align-items: center;
   }
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
   .regional-banner {
     grid-template-columns: 1fr;
-    padding: 36px 24px;
     text-align: center;
+    gap: 32px;
+  }
+  .lang-grid-cards {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
   }
   .company-layout {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 36px;
   }
-  .company-showcase {
+  .company-left {
+    text-align: center;
+  }
+  .company-left .btn-cta-main,
+  .company-left .btn-cta-wa {
+    margin: 0 auto;
+  }
+  .float-tag {
+    right: 10px;
+    bottom: 10px;
+  }
+}
+
+/* Mobile Devices (max-width: 640px) */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+  .header-nav {
+    position: sticky;
+  }
+  .nav-wrapper {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 0;
+    min-height: auto;
+  }
+  .brand-title {
+    font-size: 18px;
+  }
+  .brand-sub {
+    font-size: 10px;
+  }
+  .brand-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+  .nav-controls {
+    gap: 8px;
+  }
+  .lang-switch {
+    padding: 2px;
+  }
+  .lang-btn {
+    padding: 5px 9px;
+    font-size: 12px;
+  }
+  /* Hide the top navbar download button on small screens since sticky bottom bar handles it */
+  .header-nav .btn-cta-main {
+    display: none;
+  }
+  
+  .hero-section {
+    padding: 36px 0 60px;
+  }
+  .hero-heading {
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+  .hero-description {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  .pill-announcement {
+    font-size: 11px;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .cta-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn-cta-main,
+  .btn-cta-secondary,
+  .btn-cta-wa {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 15px;
+  }
+  .phone-outer-frame {
+    max-width: 310px;
+    border-radius: 32px;
+    border-width: 4px;
+    padding: 8px;
+  }
+  .phone-screen-img {
+    border-radius: 22px;
+  }
+  .float-tag {
+    display: none; /* remove overlap on small phones */
+  }
+
+  .stats-ribbon {
+    padding: 24px 0;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .stat-num {
+    font-size: 28px;
+  }
+  .stat-label {
+    font-size: 12px;
+  }
+
+  .features-section {
+    padding: 60px 0;
+  }
+  .section-head {
+    margin-bottom: 40px;
+  }
+  .section-title {
+    font-size: 26px;
+  }
+  .section-subtitle {
+    font-size: 14px;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .feature-box {
+    padding: 26px 20px;
+    border-radius: var(--radius-md);
+  }
+  .feature-box-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+  .feature-box h3 {
+    font-size: 18px;
+  }
+  .feature-box p {
+    font-size: 14px;
+  }
+
+  .regional-banner {
     padding: 32px 20px;
+    border-radius: var(--radius-lg);
+    margin: 20px 0 60px;
   }
+  .regional-banner h3 {
+    font-size: 24px;
+  }
+  .regional-banner p {
+    font-size: 14px;
+  }
+  .lang-grid-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .lang-card-pill {
+    padding: 14px;
+  }
+
+  .company-showcase {
+    padding: 28px 18px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 60px;
+  }
+  .company-left h2 {
+    font-size: 24px;
+  }
+  .company-left p {
+    font-size: 14px;
+  }
+  .company-left div {
+    flex-direction: column;
+  }
+  .company-contact-card {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+  .contact-detail-row {
+    gap: 12px;
+  }
+  .contact-detail-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+  .contact-detail-info .val {
+    font-size: 14px;
+  }
+
+  /* Sticky download CTA bar on mobile screen bottom */
   .mobile-bottom-bar {
     display: flex;
     gap: 10px;
   }
-  .float-tag {
-    display: none;
+
+  /* Padding at bottom of site so footer is not obscured by mobile-bottom-bar */
+  .site-footer {
+    padding-bottom: 90px;
   }
 }
